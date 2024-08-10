@@ -1,4 +1,4 @@
-let zIndexCounter = 1000;
+let zIndexCounter = 1;
 
 function openApp(appId) {
     const app = document.getElementById(appId);
