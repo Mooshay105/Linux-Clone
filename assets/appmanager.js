@@ -71,10 +71,14 @@ document.querySelectorAll('.app-header').forEach(header => {
             if (element.id === settingsAppID) {
                 localStorage.setItem("windowSettingsX", left);
                 localStorage.setItem("windowSettingsY", top);
+                windowSettingsY = localStorage.getItem("windowSettingsY") || "70px";
+                windowSettingsX = localStorage.getItem("windowSettingsX") || "400px";
             }
             if (element.id === firefoxAppID) {
                 localStorage.setItem("windowFirefoxX", left);
                 localStorage.setItem("windowFirefoxY", top);
+                windowFirefoxY = localStorage.getItem("windowFirefoxY") || "70px";
+                windowFirefoxX = localStorage.getItem("windowFirefoxX") || "400px";
             }
         }
 
