@@ -1,12 +1,13 @@
 let settingsAppID = "settings";
 let galleryAppID = "gallery";
-let windowSettingsY = localStorage.getItem("windowSettingsY");
-let windowSettingsX = localStorage.getItem("windowSettingsX");
-let windowGalleryY = localStorage.getItem("windowGalleryY");
-let windowGalleryX = localStorage.getItem("windowGalleryX");
-let settingsWindowOpen = localStorage.getItem("settingsWindowOpen");
-let galleryWindowOpen = localStorage.getItem("galleryWindowOpen");
-let topWindow = localStorage.getItem("topWindow");
+
+let windowSettingsY = localStorage.getItem("windowSettingsY") || "70px";
+let windowSettingsX = localStorage.getItem("windowSettingsX") || "400px";
+let windowGalleryY = localStorage.getItem("windowGalleryY") || "70px";
+let windowGalleryX = localStorage.getItem("windowGalleryX") || "400px";
+let settingsWindowOpen = localStorage.getItem("settingsWindowOpen") || "true";
+let galleryWindowOpen = localStorage.getItem("galleryWindowOpen") || "false";
+let topWindow = localStorage.getItem("topWindow") || "settings";
 let MidZIndex = 5;
 
 function openApp(appId) {
