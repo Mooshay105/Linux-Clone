@@ -43,6 +43,16 @@ body {
     justify-content: flex-start;
 }
 
+.dock img {
+    cursor: grab;
+    margin: 10px;
+    margin-right: 5px;
+}
+
+.dock img.dragging {
+    opacity: 0.5;
+}
+
 .barfield:hover {
     border-radius: 15px;
     padding: 5px;
@@ -55,7 +65,7 @@ img {
 
 /*App Styles*/
 
-.galleryApp {
+.firefoxApp {
     position: absolute;
     width: 538px;
     height: 400px;
@@ -65,10 +75,6 @@ img {
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     display: none;
     z-index: 3;
-}
-
-.galleryApp img {
-    border-radius: 10px;
 }
 
 .settingsApp {
@@ -106,6 +112,6 @@ img {
 
 .app-content {
     padding: 10px;
-    height: calc(100% - 40px); /* Adjust height to fit inside the app window */
-    overflow: auto; /* Enable scrolling if content exceeds window size */
+    height: calc(100% - 40px);
+    overflow: auto;
 }

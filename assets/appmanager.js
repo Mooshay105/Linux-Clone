@@ -1,12 +1,12 @@
 let settingsAppID = "settings";
-let galleryAppID = "gallery";
+let firefoxAppID = "firefox";
 
 let windowSettingsY = localStorage.getItem("windowSettingsY") || "70px";
 let windowSettingsX = localStorage.getItem("windowSettingsX") || "400px";
-let windowGalleryY = localStorage.getItem("windowGalleryY") || "70px";
-let windowGalleryX = localStorage.getItem("windowGalleryX") || "400px";
+let windowFirefoxY = localStorage.getItem("windowFirefoxY") || "70px";
+let windowFirefoxX = localStorage.getItem("windowFirefoxX") || "400px";
 let settingsWindowOpen = localStorage.getItem("settingsWindowOpen") || "true";
-let galleryWindowOpen = localStorage.getItem("galleryWindowOpen") || "false";
+let firefoxWindowOpen = localStorage.getItem("firefoxWindowOpen") || "false";
 let topWindow = localStorage.getItem("topWindow") || "settings";
 let MidZIndex = 5;
 
@@ -23,19 +23,19 @@ function openAppStartup(appId) {
         app.style.display = 'block';
         app.style.top = windowSettingsY;
         app.style.left = windowSettingsX;
-    } else if (appId == galleryAppID) {
-        localStorage.setItem("galleryWindowOpen", "true");
+    } else if (appId == firefoxAppID) {
+        localStorage.setItem("firefoxWindowOpen", "true");
         app.style.display = 'block';
-        app.style.top = windowGalleryY;
-        app.style.left = windowGalleryX;
+        app.style.top = windowFirefoxY;
+        app.style.left = windowFirefoxX;
     }
 }
 
 function closeApp(appId) {
     if (appId == settingsAppID) {
         localStorage.setItem("settingsWindowOpen", "false");
-    } else if (appId == galleryAppID) {
-        localStorage.setItem("galleryWindowOpen", "false");
+    } else if (appId == firefoxAppID) {
+        localStorage.setItem("firefoxWindowOpen", "false");
     }
     const app = document.getElementById(appId);
     app.style.display = 'none';
@@ -44,11 +44,11 @@ function closeApp(appId) {
 function bringToFront(app) {
     app.style.zIndex = MidZIndex;
     if (app == document.getElementById(settingsAppID)) {
-        document.getElementById(galleryAppID).style.zIndex = MidZIndex - 1;
+        document.getElementById(firefoxAppID).style.zIndex = MidZIndex - 1;
         localStorage.setItem("topWindow", "settings");
-    } else if (app == document.getElementById(galleryAppID)) {
+    } else if (app == document.getElementById(firefoxAppID)) {
         document.getElementById(settingsAppID).style.zIndex = MidZIndex - 1;
-        localStorage.setItem("topWindow", "gallery");
+        localStorage.setItem("topWindow", "firefox");
     }
 }
 
@@ -72,9 +72,9 @@ document.querySelectorAll('.app-header').forEach(header => {
                 localStorage.setItem("windowSettingsX", left);
                 localStorage.setItem("windowSettingsY", top);
             }
-            if (element.id === galleryAppID) {
-                localStorage.setItem("windowGalleryX", left);
-                localStorage.setItem("windowGalleryY", top);
+            if (element.id === firefoxAppID) {
+                localStorage.setItem("windowFirefoxX", left);
+                localStorage.setItem("windowFirefoxY", top);
             }
         }
 
@@ -89,13 +89,13 @@ document.querySelectorAll('.app-header').forEach(header => {
 if (settingsWindowOpen == "true") {
     openAppStartup(settingsAppID);
 }
-if (galleryWindowOpen == "true") {
-    openAppStartup(galleryAppID);
+if (firefoxWindowOpen == "true") {
+    openAppStartup(firefoxAppID);
 }
 
 if (topWindow == "settings") {
     bringToFront(document.getElementById(settingsAppID));
 }
-if (topWindow == "gallery") {
-    bringToFront(document.getElementById(galleryAppID));
+if (topWindow == "firefox") {
+    bringToFront(document.getElementById(firefoxAppID));
 }
