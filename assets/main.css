@@ -55,7 +55,10 @@ body {
 
 .barfield:hover {
 	border-radius: 15px;
-	padding: 5px;
+	padding-left: 14px;
+	padding-right: 14px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 	background-color: #343434;
 }
 
