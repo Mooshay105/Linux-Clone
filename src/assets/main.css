@@ -157,3 +157,11 @@ img {
 	display: none;
 	z-index: 3;
 }
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
