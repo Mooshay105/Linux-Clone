@@ -22,8 +22,10 @@ function App() {
 	function openApp(appId: string) {
 		if (appId === "firefox") {
 			setFirefoxWindowOpen(true);
+			setTopWindow("firefox");
 		} else if (appId === "settings") {
 			setSettingsWindowOpen(true);
+			setTopWindow("settings");
 		} else {
 			console.log("[Web Linux Kernel] [WARN]: Invalid App ID");
 		}
