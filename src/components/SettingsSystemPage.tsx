@@ -4,8 +4,11 @@ function SettingsSystemPage() {
 	return (
 		<div>
 			<h2 className="settingsPageTitle">About System</h2>
-			<img src={aboutSystemIcon} width="285px" height="100px" />
-
+			<img src={aboutSystemIcon} width="256px" height="90px" />
+			<div className="settingsField">
+				<p>Device Name</p>
+				<p>The Moose-top</p>
+			</div>
 			<div className="settingsTopCurvedField">
 				<p>Processor</p>
 				<p>12th Gen Intel® Core™ i5-1240P × 16</p>

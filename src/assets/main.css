@@ -163,6 +163,18 @@ img {
 	margin: 0;
 }
 
+.settingsField {
+	background-color: #3d3d3d;
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-inline: auto;
+	margin-bottom: 10px;
+	padding: 10px;
+	width: 90%;
+}
+
 .settingsTopCurvedField {
 	background-color: #3d3d3d;
 	border-top-left-radius: 10px;
@@ -197,6 +209,10 @@ img {
 	margin-inline: auto;
 	padding: 10px;
 	width: 90%;
+}
+
+.settingsField:hover {
+	background-color: #424242;
 }
 
 .settingsTopCurvedField:hover {
