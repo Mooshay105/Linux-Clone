@@ -4,6 +4,8 @@ import maximize from "../assets/img/maximize.png";
 import close from "../assets/img/close.png";
 import users from "../assets/img/users.png";
 import system from "../assets/img/system.png";
+import SettingsUsersPage from "./SettingsUsersPage";
+import SettingsSystemPage from "./SettingsSystemPage";
 
 interface AppProps {
 	windowX: string;
@@ -35,7 +37,7 @@ const SettingsApp: React.FC<AppProps> = ({ windowX, windowY, isOpen, isTopWindow
 			</div>
 			<div className="app-content">
 				<div className="settings-content">
-					<div className="settings-Left-Panel">
+					<div className="settingsLeftPanel">
 						<div className={`menuOption ${activeMenuOption === "Users" ? "activeMenuOption" : ""}`} onClick={() => handleClick("Users")}>
 							<img src={users} width="24px" height="24px" />
 							<p>Users</p>
@@ -45,7 +47,7 @@ const SettingsApp: React.FC<AppProps> = ({ windowX, windowY, isOpen, isTopWindow
 							<p>System</p>
 						</div>
 					</div>
-					<div className="settings-Right-Panel"></div>
+					<div className="settingsRightPanel">{activeMenuOption === "Users" ? <SettingsUsersPage /> : <SettingsSystemPage />}</div>
 				</div>
 			</div>
 		</div>

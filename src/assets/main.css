@@ -112,7 +112,7 @@ img {
 	justify-content: space-between;
 }
 
-.settings-Left-Panel {
+.settingsLeftPanel {
 	width: 200px;
 	height: 430px;
 	background-color: #2a2a2a;
@@ -123,7 +123,7 @@ img {
 	border-bottom-left-radius: 10px;
 }
 
-.settings-Right-Panel {
+.settingsRightPanel {
 	width: calc(100% - 200px);
 	height: 430px;
 	background-color: #303030;
@@ -132,6 +132,7 @@ img {
 	border-left: 1px solid #000;
 	padding: 10px;
 	border-bottom-right-radius: 10px;
+	text-align: center;
 }
 
 .menuOption {
@@ -156,6 +157,58 @@ img {
 
 .activeMenuOption:hover {
 	background-color: #4b4b4b;
+}
+
+.settingsPageTitle {
+	margin: 0;
+}
+
+.settingsUser {
+	background-color: #3d3d3d;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-inline: auto;
+	margin-bottom: 2px;
+	padding: 10px;
+	width: 90%;
+}
+
+.settingsPassword {
+	background-color: #3d3d3d;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-inline: auto;
+	margin-bottom: 2px;
+	padding: 10px;
+	width: 90%;
+}
+
+.settingsLanguage {
+	background-color: #3d3d3d;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-inline: auto;
+	padding: 10px;
+	width: 90%;
+}
+
+.settingsUser:hover {
+	background-color: #424242;
+}
+
+.settingsPassword:hover {
+	background-color: #424242;
+}
+
+.settingsLanguage:hover {
+	background-color: #424242;
 }
 
 /* Firefox App Styles */
