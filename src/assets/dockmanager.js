@@ -1,3 +1,4 @@
+// FOR REFERENCE ONLY!
 const dock = document.querySelector(".dock");
 const dockIcons = dock.querySelectorAll("img");
 
@@ -66,3 +67,4 @@ function loadDockOrder() {
 		});
 	}
 }
+// FOR REFERENCE ONLY!
