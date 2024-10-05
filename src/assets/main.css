@@ -126,7 +126,7 @@ img {
 .settings-Right-Panel {
 	width: calc(100% - 200px);
 	height: 430px;
-	background-color: #2c2c2c;
+	background-color: #303030;
 	color: white;
 	margin: 0;
 	border-left: 1px solid #000;
@@ -135,14 +135,27 @@ img {
 }
 
 .menuOption {
+	background-color: #00000000;
 	display: flex;
 	align-items: center;
 	border-radius: 10px;
+	margin: 3px;
 }
 
 .menuOption:hover {
+	background-color: #3f3f3f;
+}
+
+.activeMenuOption {
 	background-color: #444444;
+	display: flex;
+	align-items: center;
 	border-radius: 10px;
+	margin: 3px;
+}
+
+.activeMenuOption:hover {
+	background-color: #4b4b4b;
 }
 
 /* Firefox App Styles */

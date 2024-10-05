@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import minimize from "../assets/img/minimize.png";
 import maximize from "../assets/img/maximize.png";
 import close from "../assets/img/close.png";
@@ -15,6 +15,12 @@ interface AppProps {
 }
 
 const SettingsApp: React.FC<AppProps> = ({ windowX, windowY, isOpen, isTopWindow, closeApp, setTopWindow }) => {
+	const [activeMenuOption, setActiveMenuOption] = useState("Users");
+
+	function handleClick(option: string) {
+		setActiveMenuOption(option);
+	}
+
 	return (
 		<div id="settings" className={isOpen ? "settingsApp show" : "settingsApp hide"} style={{ top: windowY, left: windowX, zIndex: isTopWindow ? "3" : "1" }} onClick={setTopWindow}>
 			<div className="app-header">
@@ -30,11 +36,11 @@ const SettingsApp: React.FC<AppProps> = ({ windowX, windowY, isOpen, isTopWindow
 			<div className="app-content">
 				<div className="settings-content">
 					<div className="settings-Left-Panel">
-						<div className="menuOption">
+						<div className={`menuOption ${activeMenuOption === "Users" ? "activeMenuOption" : ""}`} onClick={() => handleClick("Users")}>
 							<img src={users} width="24px" height="24px" />
 							<p>Users</p>
 						</div>
-						<div className="menuOption">
+						<div className={`menuOption ${activeMenuOption === "System" ? "activeMenuOption" : ""}`} onClick={() => handleClick("System")}>
 							<img src={system} width="24px" height="24px" />
 							<p>System</p>
 						</div>
