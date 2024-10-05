@@ -16,7 +16,7 @@ function App() {
 	const [settingsWindowY, setSettingsWindowY] = useState("70px");
 	const [topWindow, setTopWindow] = useState("settings");
 
-	const openApp = (appId: string) => {
+	function openApp(appId: string) {
 		if (appId === "firefox") {
 			setFirefoxWindowOpen(true);
 			setTopWindow("firefox");
@@ -26,9 +26,9 @@ function App() {
 		} else {
 			console.log("[Web Linux Kernel] [WARN]: Invalid App ID");
 		}
-	};
+	}
 
-	const closeApp = (appId: string) => {
+	function closeApp(appId: string) {
 		if (appId === "firefox") {
 			setFirefoxWindowOpen(false);
 		} else if (appId === "settings") {
@@ -36,7 +36,7 @@ function App() {
 		} else {
 			console.log("[Web Linux Kernel] [WARN]: Invalid App ID");
 		}
-	};
+	}
 
 	useEffect(() => {
 		const headers = document.querySelectorAll(".app-header");
