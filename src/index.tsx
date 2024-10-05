@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import Time from "./components/time";
 import firefox from "./assets/img/firefox.png";
@@ -15,11 +15,12 @@ function App() {
 	const [firefoxWindowY, setFirefoxWindowY] = useState("70px");
 	const [settingsWindowX, setSettingsWindowX] = useState("400px");
 	const [settingsWindowY, setSettingsWindowY] = useState("70px");
+	const [topWindow, setTopWindow] = useState("settings");
 
 	function openApp(appId: string) {
-		if (appId == "firefox") {
+		if (appId === "firefox") {
 			setFirefoxWindowOpen(true);
-		} else if (appId == "settings") {
+		} else if (appId === "settings") {
 			setSettingsWindowOpen(true);
 		} else {
 			console.log("[Web Linux Kernel] [WARN]: Invalid App ID");
@@ -27,17 +28,61 @@ function App() {
 	}
 
 	function closeApp(appId: string) {
-		if (appId == "firefox") {
+		if (appId === "firefox") {
 			setFirefoxWindowOpen(false);
-		} else if (appId == "settings") {
+		} else if (appId === "settings") {
 			setSettingsWindowOpen(false);
 		} else {
 			console.log("[Web Linux Kernel] [WARN]: Invalid App ID");
 		}
 	}
 
+	useEffect(() => {
+		const headers = document.querySelectorAll(".app-header");
+
+		headers.forEach((header) => {
+			let element = header.parentElement as HTMLElement;
+			let offsetX: number, offsetY: number, mouseX: number, mouseY: number;
+
+			element.addEventListener("mousedown", (e) => {
+				offsetX = e.clientX - element.getBoundingClientRect().left;
+				offsetY = e.clientY - element.getBoundingClientRect().top;
+
+				function onMouseMove(e: MouseEvent) {
+					mouseX = e.clientX;
+					mouseY = e.clientY;
+					let left = mouseX - offsetX + "px";
+					let top = mouseY - offsetY + "px";
+					element.style.left = left;
+					element.style.top = top;
+					if (element.id === "settings") {
+						setSettingsWindowX(left);
+						setSettingsWindowY(top);
+						setTopWindow("settings");
+					} else if (element.id === "firefox") {
+						setFirefoxWindowX(left);
+						setFirefoxWindowY(top);
+						setTopWindow("firefox");
+					} else {
+						console.log("[Web Linux Kernel] [WARN]: Invalid App ID");
+					}
+				}
+
+				document.addEventListener("mousemove", onMouseMove);
+
+				document.addEventListener(
+					"mouseup",
+					() => {
+						document.removeEventListener("mousemove", onMouseMove);
+					},
+					{ once: true },
+				);
+			});
+		});
+	}, []);
+
 	return (
-		<body>
+		<div>
 			<header>
 				<Time />
 			</header>
@@ -45,7 +90,7 @@ function App() {
 				<img src={firefox} width="48px" height="48px" onClick={() => openApp("firefox")} />
 				<img src={settings} width="48px" height="48px" onClick={() => openApp("settings")} />
 			</div>
-			<div id="settings" className={settingsWindowOpen ? "settingsApp show" : "settingsApp hide"} style={{ top: settingsWindowY, left: settingsWindowX }}>
+			<div id="settings" className={settingsWindowOpen ? "settingsApp show" : "settingsApp hide"} style={{ top: settingsWindowY, left: settingsWindowX, zIndex: topWindow === "settings" ? "3" : "1" }} onClick={() => setTopWindow("settings")}>
 				<div className="app-header">
 					<div className="app-title">
 						<p>Settings</p>
@@ -72,7 +117,7 @@ function App() {
 					</div>
 				</div>
 			</div>
-			<div id="firefox" className={firefoxWindowOpen ? "firefoxApp show" : "firefoxApp hide"} style={{ top: firefoxWindowY, left: firefoxWindowX }}>
+			<div id="firefox" className={firefoxWindowOpen ? "firefoxApp show" : "firefoxApp hide"} style={{ top: firefoxWindowY, left: firefoxWindowX, zIndex: topWindow === "firefox" ? "3" : "1" }} onClick={() => setTopWindow("firefox")}>
 				<div className="app-header">
 					<div className="app-title">
 						<p>Firefox Web Browser</p>
@@ -85,7 +130,7 @@ function App() {
 				</div>
 				<div className="app-content"> To Do... </div>
 			</div>
-		</body>
+		</div>
 	);
 }
 
