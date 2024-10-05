@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import Time from "./components/time";
+import Time from "./components/Time";
 import firefox from "./assets/img/firefox.png";
 import settings from "./assets/img/settings.png";
 import minimize from "./assets/img/minimize.png";
 import maximize from "./assets/img/maximize.png";
 import close from "./assets/img/close.png";
+import users from "./assets/img/users.png";
+import system from "./assets/img/system.png";
 import "./assets/main.css";
 
 function App() {
@@ -105,11 +107,11 @@ function App() {
 					<div className="settings-content">
 						<div className="settings-Left-Panel">
 							<div className="menuOption">
-								<img src="assets/img/users.png" width="24px" height="24px" />
+								<img src={users} width="24px" height="24px" />
 								<p>Users</p>
 							</div>
 							<div className="menuOption">
-								<img src="assets/img/system.png" width="24px" height="24px" />
+								<img src={system} width="24px" height="24px" />
 								<p>System</p>
 							</div>
 						</div>
