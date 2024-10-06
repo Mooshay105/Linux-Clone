@@ -25,7 +25,7 @@ const SettingsApp: React.FC<AppProps> = ({ windowX, windowY, isOpen, isTopWindow
 
 	return (
 		<div id="settings" className={isOpen ? "settingsApp show" : "settingsApp hide"} style={{ top: windowY, left: windowX, zIndex: isTopWindow ? "3" : "1" }} onClick={setTopWindow}>
-			<div className="app-header">
+			<div className="app-header" id="appHeader">
 				<div className="app-title">
 					<p>Settings</p>
 				</div>

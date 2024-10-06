@@ -5,9 +5,12 @@ import FirefoxApp from "./components/FirefoxApp";
 import SettingsApp from "./components/SettingsApp";
 import firefox from "./assets/img/firefox.png";
 import settings from "./assets/img/settings.png";
+import reset from "./assets/img/reset.png";
 import "./assets/main.css";
 
 function App() {
+	const defaultWindowX = "400px";
+	const defaultWindowY = "70px";
 	const [settingsWindowOpen, setSettingsWindowOpen] = useState(true);
 	const [firefoxWindowOpen, setFirefoxWindowOpen] = useState(false);
 	const [firefoxWindowX, setFirefoxWindowX] = useState("400px");
@@ -42,26 +45,27 @@ function App() {
 		const headers = document.querySelectorAll(".app-header");
 
 		headers.forEach((header) => {
-			let element = header.parentElement as HTMLElement;
+			let parentElement = header.parentElement as HTMLElement;
 			let offsetX: number, offsetY: number;
 
-			element.addEventListener("mousedown", (e) => {
-				offsetX = e.clientX - element.getBoundingClientRect().left;
-				offsetY = e.clientY - element.getBoundingClientRect().top;
+			header.addEventListener("mousedown", (e) => {
+				const event = e as MouseEvent; // Assert the event type
+				offsetX = event.clientX - parentElement.getBoundingClientRect().left;
+				offsetY = event.clientY - parentElement.getBoundingClientRect().top;
 
 				function onMouseMove(e: MouseEvent) {
 					const mouseX = e.clientX;
 					const mouseY = e.clientY;
 					const left = mouseX - offsetX + "px";
 					const top = mouseY - offsetY + "px";
-					element.style.left = left;
-					element.style.top = top;
+					parentElement.style.left = left;
+					parentElement.style.top = top;
 
-					if (element.id === "settings") {
+					if (parentElement.id === "settings") {
 						setSettingsWindowX(left);
 						setSettingsWindowY(top);
 						setTopWindow("settings");
-					} else if (element.id === "firefox") {
+					} else if (parentElement.id === "firefox") {
 						setFirefoxWindowX(left);
 						setFirefoxWindowY(top);
 						setTopWindow("firefox");
@@ -81,14 +85,24 @@ function App() {
 		});
 	}, []);
 
+	function resetAppPos() {
+		setSettingsWindowX(defaultWindowX);
+		setSettingsWindowY(defaultWindowY);
+		setFirefoxWindowX(defaultWindowX);
+		setFirefoxWindowY(defaultWindowY);
+	}
+
 	return (
 		<div>
 			<header>
 				<Time />
 			</header>
 			<div className="dock">
-				<img src={firefox} width="48px" height="48px" onClick={() => openApp("firefox")} draggable="false" />
-				<img src={settings} width="48px" height="48px" onClick={() => openApp("settings")} draggable="false" />
+				<div>
+					<img src={firefox} width="48px" height="48px" onClick={() => openApp("firefox")} draggable="false" />
+					<img src={settings} width="48px" height="48px" onClick={() => openApp("settings")} draggable="false" />
+				</div>
+				<img src={reset} width="48px" height="48px" onClick={() => resetAppPos()} draggable="false" style={{ margin: "25px" }} />
 			</div>
 			<SettingsApp windowX={settingsWindowX} windowY={settingsWindowY} isOpen={settingsWindowOpen} isTopWindow={topWindow === "settings"} closeApp={() => closeApp("settings")} setTopWindow={() => setTopWindow("settings")} />
 			<FirefoxApp windowX={firefoxWindowX} windowY={firefoxWindowY} isOpen={firefoxWindowOpen} isTopWindow={topWindow === "firefox"} closeApp={() => closeApp("firefox")} setTopWindow={() => setTopWindow("firefox")} />
