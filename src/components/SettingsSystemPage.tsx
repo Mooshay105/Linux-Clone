@@ -4,7 +4,7 @@ function SettingsSystemPage() {
 	return (
 		<div>
 			<h2 className="settingsPageTitle">About System</h2>
-			<img src={aboutSystemIcon} width="256px" height="90px" />
+			<img src={aboutSystemIcon} width="256px" height="90px" draggable="false" />
 			<div className="settingsField">
 				<p>Device Name</p>
 				<p>The Moose-top</p>

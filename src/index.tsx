@@ -87,8 +87,8 @@ function App() {
 				<Time />
 			</header>
 			<div className="dock">
-				<img src={firefox} width="48px" height="48px" onClick={() => openApp("firefox")} />
-				<img src={settings} width="48px" height="48px" onClick={() => openApp("settings")} />
+				<img src={firefox} width="48px" height="48px" onClick={() => openApp("firefox")} draggable="false" />
+				<img src={settings} width="48px" height="48px" onClick={() => openApp("settings")} draggable="false" />
 			</div>
 			<SettingsApp windowX={settingsWindowX} windowY={settingsWindowY} isOpen={settingsWindowOpen} isTopWindow={topWindow === "settings"} closeApp={() => closeApp("settings")} setTopWindow={() => setTopWindow("settings")} />
 			<FirefoxApp windowX={firefoxWindowX} windowY={firefoxWindowY} isOpen={firefoxWindowOpen} isTopWindow={topWindow === "firefox"} closeApp={() => closeApp("firefox")} setTopWindow={() => setTopWindow("firefox")} />

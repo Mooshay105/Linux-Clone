@@ -30,20 +30,20 @@ const SettingsApp: React.FC<AppProps> = ({ windowX, windowY, isOpen, isTopWindow
 					<p>Settings</p>
 				</div>
 				<div className="app-buttons">
-					<img src={minimize} width="24px" height="24px" onClick={closeApp} />
-					<img src={maximize} width="24px" height="24px" />
-					<img src={close} width="24px" height="24px" onClick={closeApp} />
+					<img src={minimize} width="24px" height="24px" onClick={closeApp} draggable="false" />
+					<img src={maximize} width="24px" height="24px" draggable="false" />
+					<img src={close} width="24px" height="24px" onClick={closeApp} draggable="false" />
 				</div>
 			</div>
 			<div className="app-content">
 				<div className="settings-content">
 					<div className="settingsLeftPanel">
 						<div className={`menuOption ${activeMenuOption === "Users" ? "activeMenuOption" : ""}`} onClick={() => handleClick("Users")}>
-							<img src={users} width="24px" height="24px" />
+							<img src={users} width="24px" height="24px" draggable="false" />
 							<p>Users</p>
 						</div>
 						<div className={`menuOption ${activeMenuOption === "System" ? "activeMenuOption" : ""}`} onClick={() => handleClick("System")}>
-							<img src={system} width="24px" height="24px" />
+							<img src={system} width="24px" height="24px" draggable="false" />
 							<p>System</p>
 						</div>
 					</div>

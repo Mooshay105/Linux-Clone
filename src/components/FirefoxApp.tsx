@@ -20,9 +20,9 @@ const FirefoxApp: React.FC<AppProps> = ({ windowX, windowY, isOpen, isTopWindow,
 					<p>Firefox Web Browser</p>
 				</div>
 				<div className="app-buttons">
-					<img src={minimize} width="24px" height="24px" onClick={closeApp} />
-					<img src={maximize} width="24px" height="24px" />
-					<img src={close} width="24px" height="24px" onClick={closeApp} />
+					<img src={minimize} width="24px" height="24px" onClick={closeApp} draggable="false" />
+					<img src={maximize} width="24px" height="24px" draggable="false" />
+					<img src={close} width="24px" height="24px" onClick={closeApp} draggable="false" />
 				</div>
 			</div>
 			<div className="app-content"> To Do... </div>

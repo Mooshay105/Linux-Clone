@@ -3,6 +3,7 @@
 html {
 	font-family: "Ubuntu", sans-serif;
 	user-select: none;
+	overflow: hidden;
 }
 
 header {
